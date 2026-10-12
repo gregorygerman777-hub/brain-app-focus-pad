@@ -1,0 +1,22 @@
+dialect: brain-app/v1
+id: focus-pad
+name: Focus Pad
+version: 0.1.0
+description: "A quiet full-screen writing pad with autosave, word count and a timer."
+license: MIT
+author:
+  name: Gregory German
+  contact: gregorygerman777@gmail.com
+  url: https://github.com/gregorygerman777-hub
+repo: https://github.com/gregorygerman777-hub/brain-app-focus-pad
+tab:
+  label: Pad
+  route: /pad
+  order: 140
+entries:
+  ui_bundle: dist
+requires_layers:
+  - layer: episodic
+    mode: append
+permissions:
+  - memory.write
