@@ -1,7 +1,7 @@
 dialect: brain-app/v1
 id: focus-pad
 name: Focus Pad
-version: 0.1.0
+version: 0.1.1
 description: "A quiet full-screen writing pad with autosave, word count and a timer."
 license: MIT
 author:
