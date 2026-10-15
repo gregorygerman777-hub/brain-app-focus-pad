@@ -115,6 +115,7 @@ function showSources(el, sources) {
   el.textContent = 'Sources: ' + names.join(', ');
 }
 const $ = (id) => document.getElementById(id);
+const localDate = (d = new Date()) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 const words = (s) => (s.trim().match(/\S+/g) || []).length;
 $('pad').value = store('pad.text', '');
 const upd = () => { $('count').textContent = words($('pad').value) + ' words'; };
@@ -138,7 +139,7 @@ $('keep').addEventListener('click', async () => {
   $('keep').disabled = true; setStatus($('status'), 'Saving...');
   try {
     const first = text.split('\n')[0].slice(0, 80);
-    await Brain.remember('episodic', `Writing from Focus Pad (${new Date().toISOString().slice(0, 10)})\n\n${text}`, { app: 'focus-pad', title: first });
+    await Brain.remember('episodic', `Writing from Focus Pad (${localDate()})\n\n${text}`, { app: 'focus-pad', title: first });
     setStatus($('status'), 'Saved to memory.', 'ok');
   } catch (e) { setStatus($('status'), errText(e), 'err'); }
   $('keep').disabled = false;
@@ -146,7 +147,7 @@ $('keep').addEventListener('click', async () => {
 $('dl').addEventListener('click', () => {
   const blob = new Blob([$('pad').value], { type: 'text/markdown' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = `pad-${new Date().toISOString().slice(0, 10)}.md`; a.click(); URL.revokeObjectURL(a.href);
+  a.download = `pad-${localDate()}.md`; a.click(); URL.revokeObjectURL(a.href);
 });
 $('clear').addEventListener('click', () => {
   if (!$('pad').value || confirm('Clear the pad? Download or save first if you want to keep it.')) { $('pad').value = ''; save('pad.text', ''); upd(); }
