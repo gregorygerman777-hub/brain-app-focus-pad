@@ -44,7 +44,7 @@ th,td{text-align:left;padding:8px;border-top:1px solid var(--border)}
 <div class="row" style="margin-top:0"><button id="timer">Start 25 min</button><span class="muted" id="clock"></span><span class="muted" id="count">0 words</span></div>
 <textarea id="pad" style="min-height:60vh;margin-top:16px;font-size:17px;line-height:1.7" placeholder="Start writing"></textarea>
 <div class="row"><button class="primary" id="keep">Save to memory</button><button id="dl">Download .md</button><button id="clear">Clear</button></div>
-<div class="status" id="status"></div>
+<div class="status" id="status" role="status" aria-live="polite"></div>
 </main>
 <script>
 // Follow the console's theme and fonts (same-origin iframe), live.
